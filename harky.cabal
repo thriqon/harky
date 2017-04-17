@@ -1,0 +1,39 @@
+name:                harky
+version:             0.1.0.0
+synopsis:            HTMLify Markdown
+license:             ISC
+license-file:        LICENSE
+author:              Jonas Weber
+maintainer:          mail@jonasw.de
+build-type:          Simple
+cabal-version:       >=1.10
+
+executable harky
+  main-is:             Main.lhs
+  build-depends:       base
+                     , tasty >= 0.11.2 && <0.12.0
+                     , tasty-smallcheck >=0.8.1 && <0.9.0
+                     , tasty-quickcheck >=0.8.4 && <0.9.0
+                     , tasty-golden >=2.3.1.1 && <2.4.0.0
+                     , tasty-hunit >=0.9.2 && <0.10.0
+                     , bytestring == 0.10.*
+  default-language:    Haskell2010
+
+test-suite test-harky
+  type:                exitcode-stdio-1.0
+  main-is:             Main.lhs
+  default-language:    Haskell2010
+  ghc-options:         -main-is testMain
+  build-depends:       base
+                     , tasty >= 0.11.2 && <0.12.0
+                     , tasty-smallcheck >=0.8.1 && <0.9.0
+                     , tasty-quickcheck >=0.8.4 && <0.9.0
+                     , tasty-golden >=2.3.1.1 && <2.4.0.0
+                     , tasty-hunit >=0.9.2 && <0.10.0
+                     , bytestring == 0.10.*
+
+test-suite test-hlint
+  build-depends:     base, hlint == 1.9.41
+  default-language:  Haskell2010 
+  main-is:           HLintRunner.hs
+  type:              exitcode-stdio-1.0 
